@@ -1,0 +1,12 @@
+[
+  { "id": "cerebro_relampago", "nome": "Cérebro Relâmpago", "icone": "🧠⚡", "custo": 5, "descricao": "Pensa mais rápido!", "efeito": { "tipo": "per_turn", "atributo": "faiscas", "valor": 2, "gatilho": "after_roll" } },
+  { "id": "coracao_forte", "nome": "Coração Forte", "icone": "❤️💪", "custo": 4, "descricao": "Confiança extra", "efeito": { "tipo": "planet_start", "atributo": "brilho", "valor": 3, "gatilho": "planet_start" } },
+  { "id": "escudo_diamante", "nome": "Escudo de Diamante", "icone": "🛡️💎", "custo": 6, "descricao": "Proteção duradoura", "efeito": { "tipo": "reduce_penalty", "atributo": "escudo", "porcentagem": 20, "gatilho": "before_event_penalty" } },
+  { "id": "amigo_estrela", "nome": "Amigo Estrela", "icone": "🌟", "custo": 7, "descricao": "Cada vitória rende mais", "efeito": { "tipo": "extra_star_per_victory", "valor": 1, "gatilho": "on_victory" } },
+  { "id": "antenas_hiperativas", "nome": "Antenas Hiperativas", "icone": "📡", "custo": 8, "descricao": "Melhor sorte", "efeito": { "tipo": "extra_dice", "valor": 1, "gatilho": "always" } },
+  { "id": "mochila_reforcada", "nome": "Mochila Reforçada", "icone": "🎒", "custo": 6, "descricao": "Guarde mais respostas", "efeito": { "tipo": "mochila_extra_slot", "gatilho": "always" } },
+  { "id": "escudo_reativo", "nome": "Escudo Reativo", "icone": "🛡️⚡", "custo": 9, "descricao": "Proteção automática", "efeito": { "tipo": "conditional_shield", "atributo": "escudo", "valor": 10, "condicao": "below_20", "gatilho": "check_shield" } },
+  { "id": "farol_confianca", "nome": "Farol de Confiança", "icone": "🔦", "custo": 7, "descricao": "Recupera autoestima", "efeito": { "tipo": "recovery", "atributo": "brilho", "valor": 3, "condicao": "below_30", "limite": 50, "gatilho": "recovery_check" } },
+  { "id": "gerador_faiscas", "nome": "Gerador de Faíscas", "icone": "🔋", "custo": 5, "descricao": "Energia renovável", "efeito": { "tipo": "planet_start", "atributo": "faiscas", "valor": 15, "gatilho": "planet_start" } },
+  { "id": "sabio_estelar", "nome": "Sábio Estelar", "icone": "🧙", "custo": 10, "descricao": "Preparado para o desafio", "efeito": { "tipo": "before_boss", "atributo": "all", "valor": 5, "gatilho": "before_boss" } }
+]

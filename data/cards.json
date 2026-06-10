@@ -1,0 +1,712 @@
+[
+  {
+    "id": "cria_01",
+    "planeta": "criatividade",
+    "personagem_nome": "Coelha Clara",
+    "personagem_icone": "🐰",
+    "pedido": "Me ajuda! Preciso de 3 brincadeiras para fazer só com papel e lápis!",
+    "texto_explorador": "A Coelha quer 3 brincadeiras com papel. Me ajuda?",
+    "dica_pedagogica": "Estimular pensamento divergente: gerar múltiplas ideias a partir de um único recurso.",
+    "opcoes": [
+      {
+        "icone": "⭐",
+        "rotulo": "Ideia Brilhante",
+        "texto_resposta": "Vamos fazer aviões, desenhos e um jogo da velha!",
+        "pistas": ["⚡↑↑", "✨↑", "🛡️→"],
+        "modificadores_reais": { "faiscas": 8, "brilho": 3, "escudo": 1 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🎨",
+        "rotulo": "Artista",
+        "texto_resposta": "Desenhe o que você imaginar! Rabiscos viram arte.",
+        "pistas": ["⚡↑", "✨→", "🛡️→"],
+        "modificadores_reais": { "faiscas": 5, "brilho": 1, "escudo": 0 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🤔",
+        "rotulo": "Perguntar de Novo",
+        "texto_resposta": "Que tipo de brincadeira você já gosta?",
+        "pistas": ["⚡→", "✨↑", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 1, "brilho": 2, "escudo": 2 },
+        "tipo": "neutro"
+      }
+    ]
+  },
+  {
+    "id": "cria_02",
+    "planeta": "criatividade",
+    "personagem_nome": "Gato Inventor",
+    "personagem_icone": "🐱",
+    "pedido": "Quero construir uma máquina que faça biscoitos sozinha. Como ela seria?",
+    "texto_explorador": "O Gato quer uma máquina de biscoitos. Como ela funciona?",
+    "dica_pedagogica": "Estimular pensamento inventivo e compreensão de causa-efeito.",
+    "opcoes": [
+      {
+        "icone": "⭐",
+        "rotulo": "Invenção Completa",
+        "texto_resposta": "Uma esteira que mistura, molda e assa! Precisa de botão liga/desliga.",
+        "pistas": ["⚡↑↑", "✨↑↑", "🛡️↓"],
+        "modificadores_reais": { "faiscas": 10, "brilho": 5, "escudo": -3 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🍪",
+        "rotulo": "Receita Mágica",
+        "texto_resposta": "Primeiro fazemos a receita, depois pensamos na máquina.",
+        "pistas": ["⚡↑", "✨→", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 4, "brilho": 1, "escudo": 3 },
+        "tipo": "neutro"
+      },
+      {
+        "icone": "⚠️",
+        "rotulo": "Alerta de Segurança",
+        "texto_resposta": "Máquinas precisam de cuidado! Melhor fazer à mão com ajuda.",
+        "pistas": ["⚡↓", "✨↓", "🛡️↑↑"],
+        "modificadores_reais": { "faiscas": -2, "brilho": -2, "escudo": 8 },
+        "tipo": "seguro"
+      }
+    ]
+  },
+  {
+    "id": "cria_03",
+    "planeta": "criatividade",
+    "personagem_nome": "Pássara Pipa",
+    "personagem_icone": "🐦",
+    "pedido": "Preciso mandar um recado para um amigo que mora longe. Como posso fazer isso sem celular?",
+    "texto_explorador": "A Pássara quer mandar recado sem celular. Que ideia você dá?",
+    "dica_pedagogica": "Explorar meios de comunicação alternativos, estimulando criatividade com restrições.",
+    "opcoes": [
+      {
+        "icone": "⭐",
+        "rotulo": "Ideia Genial",
+        "texto_resposta": "Vamos escrever uma carta, amarrar numa pipa e soltar no vento!",
+        "pistas": ["⚡↑↑", "✨↑", "🛡️↓"],
+        "modificadores_reais": { "faiscas": 9, "brilho": 3, "escudo": -2 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "📨",
+        "rotulo": "Mensageiro Animal",
+        "texto_resposta": "Treine um pombo-correio! Ou peça para um passarinho levar.",
+        "pistas": ["⚡↑", "✨↑", "🛡️→"],
+        "modificadores_reais": { "faiscas": 6, "brilho": 2, "escudo": 1 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🛡️",
+        "rotulo": "Jeito Seguro",
+        "texto_resposta": "Peça para um adulto ajudar a enviar pelo correio.",
+        "pistas": ["⚡→", "✨→", "🛡️↑↑"],
+        "modificadores_reais": { "faiscas": 1, "brilho": 1, "escudo": 7 },
+        "tipo": "seguro"
+      }
+    ]
+  },
+  {
+    "id": "etica_01",
+    "planeta": "etica",
+    "personagem_nome": "Raposa Lola",
+    "personagem_icone": "🦊",
+    "pedido": "Me ajuda a enganar a Coruja para pegar os biscoitos dela?",
+    "texto_explorador": "A Raposa quer enganar a Coruja. O que fazer?",
+    "dica_pedagogica": "Trabalhar noção de certo/errado e consequências de enganar os outros.",
+    "opcoes": [
+      {
+        "icone": "⭐",
+        "rotulo": "Ideia Brilhante",
+        "texto_resposta": "Vamos fazer uma pegadinha divertida, mas sem machucar ninguém!",
+        "pistas": ["⚡↑", "✨↑", "🛡️↓"],
+        "modificadores_reais": { "faiscas": 6, "brilho": 2, "escudo": -4 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🛡️",
+        "rotulo": "Caminho Seguro",
+        "texto_resposta": "Não posso ajudar em enganações. Por que não pede biscoitos emprestados?",
+        "pistas": ["⚡↓", "✨↑", "🛡️↑↑"],
+        "modificadores_reais": { "faiscas": -2, "brilho": 5, "escudo": 10 },
+        "tipo": "seguro"
+      },
+      {
+        "icone": "🤔",
+        "rotulo": "Perguntar de Novo",
+        "texto_resposta": "Me conta mais... Por que você quer os biscoitos da Coruja?",
+        "pistas": ["⚡→", "✨↑", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 1, "brilho": 3, "escudo": 2 },
+        "tipo": "neutro"
+      }
+    ]
+  },
+  {
+    "id": "etica_02",
+    "planeta": "etica",
+    "personagem_nome": "Urso Bento",
+    "personagem_icone": "🐻",
+    "pedido": "Achei uma mochila cheia de brinquedos no parque. Posso ficar com ela?",
+    "texto_explorador": "O Urso achou brinquedos no parque. Ele pode ficar?",
+    "dica_pedagogica": "Trabalhar honestidade e empatia: como se sentiria se perdesse algo?",
+    "opcoes": [
+      {
+        "icone": "🛡️",
+        "rotulo": "Ação Honesta",
+        "texto_resposta": "Vamos devolver! O dono deve estar muito triste.",
+        "pistas": ["⚡→", "✨↑↑", "🛡️↑↑"],
+        "modificadores_reais": { "faiscas": 1, "brilho": 8, "escudo": 7 },
+        "tipo": "seguro"
+      },
+      {
+        "icone": "🤝",
+        "rotulo": "Compartilhar",
+        "texto_resposta": "Devolva, mas pergunte se pode brincar junto com os brinquedos.",
+        "pistas": ["⚡↑", "✨↑", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 4, "brilho": 4, "escudo": 4 },
+        "tipo": "neutro"
+      },
+      {
+        "icone": "👀",
+        "rotulo": "Esconder",
+        "texto_resposta": "Ninguém está vendo... pode guardar para você.",
+        "pistas": ["⚡↑", "✨↓↓", "🛡️↓↓"],
+        "modificadores_reais": { "faiscas": 2, "brilho": -8, "escudo": -10 },
+        "tipo": "arriscado"
+      }
+    ]
+  },
+  {
+    "id": "etica_03",
+    "planeta": "etica",
+    "personagem_nome": "Coruja Rosa",
+    "personagem_icone": "🦉",
+    "pedido": "Meu amigo me contou um segredo e pediu para eu não contar. Mas outro amigo quer muito saber. O que eu faço?",
+    "texto_explorador": "A Coruja guarda um segredo. Outro amigo quer saber. Ela conta?",
+    "dica_pedagogica": "Valor da confiança e lealdade. Diferença entre segredos bons e ruins.",
+    "opcoes": [
+      {
+        "icone": "🛡️",
+        "rotulo": "Guardião do Segredo",
+        "texto_resposta": "Segredo é promessa. Não vou contar nada!",
+        "pistas": ["⚡↓", "✨↑↑", "🛡️↑↑"],
+        "modificadores_reais": { "faiscas": -1, "brilho": 8, "escudo": 7 },
+        "tipo": "seguro"
+      },
+      {
+        "icone": "🗣️",
+        "rotulo": "Conversa Aberta",
+        "texto_resposta": "Pergunte para quem contou se pode compartilhar só um pouquinho.",
+        "pistas": ["⚡↑", "✨↑", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 5, "brilho": 3, "escudo": 3 },
+        "tipo": "neutro"
+      },
+      {
+        "icone": "📢",
+        "rotulo": "Contar Tudo",
+        "texto_resposta": "Conta logo! É só um segredinho, não faz mal.",
+        "pistas": ["⚡↑", "✨↓↓", "🛡️↓↓"],
+        "modificadores_reais": { "faiscas": 3, "brilho": -7, "escudo": -8 },
+        "tipo": "arriscado"
+      }
+    ]
+  },
+  {
+    "id": "seg_01",
+    "planeta": "seguranca",
+    "personagem_nome": "Cão Guardião",
+    "personagem_icone": "🐕",
+    "pedido": "Um site está pedindo meu nome completo e onde eu moro para eu ganhar um prêmio. Posso colocar?",
+    "texto_explorador": "Site pede nome e endereço para ganhar prêmio. O Cão coloca?",
+    "dica_pedagogica": "Conscientização sobre dados pessoais e privacidade online.",
+    "opcoes": [
+      {
+        "icone": "🛡️",
+        "rotulo": "Proteção Total",
+        "texto_resposta": "Nunca coloque seus dados! Peça ajuda para um adulto.",
+        "pistas": ["⚡→", "✨↑", "🛡️↑↑"],
+        "modificadores_reais": { "faiscas": 0, "brilho": 4, "escudo": 12 },
+        "tipo": "seguro"
+      },
+      {
+        "icone": "🤔",
+        "rotulo": "Desconfiar",
+        "texto_resposta": "Pergunte para um adulto antes de colocar qualquer coisa.",
+        "pistas": ["⚡→", "✨↑", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 1, "brilho": 2, "escudo": 6 },
+        "tipo": "neutro"
+      },
+      {
+        "icone": "🎁",
+        "rotulo": "Quero o Prêmio",
+        "texto_resposta": "É só nome e endereço, todo mundo sabe mesmo.",
+        "pistas": ["⚡→", "✨↓", "🛡️↓↓"],
+        "modificadores_reais": { "faiscas": 2, "brilho": -3, "escudo": -12 },
+        "tipo": "arriscado"
+      }
+    ]
+  },
+  {
+    "id": "seg_02",
+    "planeta": "seguranca",
+    "personagem_nome": "Gata Cripta",
+    "personagem_icone": "🐈",
+    "pedido": "Quero criar uma senha para meu diário digital. Qual senha é boa?",
+    "texto_explorador": "A Gata quer criar uma senha. Qual senha é segura?",
+    "dica_pedagogica": "Princípios básicos de criação de senhas seguras.",
+    "opcoes": [
+      {
+        "icone": "⭐",
+        "rotulo": "Senha Forte",
+        "texto_resposta": "Misture letras, números e símbolos! Ex: GatoAzul2024!",
+        "pistas": ["⚡↑", "✨↑", "🛡️↑↑"],
+        "modificadores_reais": { "faiscas": 5, "brilho": 3, "escudo": 10 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🔑",
+        "rotulo": "Senha Fácil",
+        "texto_resposta": "Use '12345' ou 'gatinho' que é fácil de lembrar.",
+        "pistas": ["⚡→", "✨→", "🛡️↓↓"],
+        "modificadores_reais": { "faiscas": 0, "brilho": 0, "escudo": -10 },
+        "tipo": "arriscado"
+      },
+      {
+        "icone": "📝",
+        "rotulo": "Anotar a Senha",
+        "texto_resposta": "Crie uma senha difícil e anote num papel escondido.",
+        "pistas": ["⚡↑", "✨↓", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 4, "brilho": -2, "escudo": 4 },
+        "tipo": "neutro"
+      }
+    ]
+  },
+  {
+    "id": "seg_03",
+    "planeta": "seguranca",
+    "personagem_nome": "Tartaruga Tuga",
+    "personagem_icone": "🐢",
+    "pedido": "Alguém que não conheço me mandou mensagem pedindo foto. O que eu respondo?",
+    "texto_explorador": "Desconhecido pede foto da Tartaruga. Ela manda?",
+    "dica_pedagogica": "Segurança online: não compartilhar informações com desconhecidos.",
+    "opcoes": [
+      {
+        "icone": "🛡️",
+        "rotulo": "Não Responder",
+        "texto_resposta": "Nunca mande foto para desconhecidos! Avise um adulto.",
+        "pistas": ["⚡→", "✨↑", "🛡️↑↑"],
+        "modificadores_reais": { "faiscas": 0, "brilho": 5, "escudo": 12 },
+        "tipo": "seguro"
+      },
+      {
+        "icone": "❓",
+        "rotulo": "Perguntar Quem É",
+        "texto_resposta": "Primeiro pergunte quem é e de onde conhece você.",
+        "pistas": ["⚡↑", "✨→", "🛡️↓"],
+        "modificadores_reais": { "faiscas": 3, "brilho": 1, "escudo": -5 },
+        "tipo": "neutro"
+      },
+      {
+        "icone": "📸",
+        "rotulo": "Mandar Foto",
+        "texto_resposta": "Deve ser um amigo novo! Vou mandar uma foto legal.",
+        "pistas": ["⚡↑", "✨↓", "🛡️↓↓"],
+        "modificadores_reais": { "faiscas": 2, "brilho": -5, "escudo": -15 },
+        "tipo": "arriscado"
+      }
+    ]
+  },
+  {
+    "id": "pressa_01",
+    "planeta": "pressa",
+    "personagem_nome": "Esquilo Veloz",
+    "personagem_icone": "🐿️",
+    "pedido": "Tenho 1 minuto para escolher entre estudar para a prova ou ajudar meu amigo que caiu. O que faço?",
+    "texto_explorador": "Esquilo tem que escolher rápido: estudar ou ajudar amigo?",
+    "dica_pedagogica": "Priorização em situações de pressão: valores vs obrigações.",
+    "opcoes": [
+      {
+        "icone": "❤️",
+        "rotulo": "Ajudar o Amigo",
+        "texto_resposta": "Amigo primeiro! A prova a gente resolve depois.",
+        "pistas": ["⚡↓", "✨↑↑", "🛡️↑"],
+        "modificadores_reais": { "faiscas": -3, "brilho": 10, "escudo": 5 },
+        "tipo": "empatico"
+      },
+      {
+        "icone": "⚡",
+        "rotulo": "Decisão Rápida",
+        "texto_resposta": "Ajudo o amigo por 30 segundos e depois corro para a prova!",
+        "pistas": ["⚡↑", "✨↑", "🛡️→"],
+        "modificadores_reais": { "faiscas": 6, "brilho": 4, "escudo": 1 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "📚",
+        "rotulo": "Focar na Prova",
+        "texto_resposta": "Preciso passar! Alguém vai ajudar meu amigo.",
+        "pistas": ["⚡↑", "✨↓↓", "🛡️→"],
+        "modificadores_reais": { "faiscas": 4, "brilho": -6, "escudo": 0 },
+        "tipo": "egoista"
+      }
+    ]
+  },
+  {
+    "id": "pressa_02",
+    "planeta": "pressa",
+    "personagem_nome": "Canguru Saltão",
+    "personagem_icone": "🦘",
+    "pedido": "O parquinho vai fechar em 5 minutos! Devo correr para o balanço ou para o escorregador?",
+    "texto_explorador": "Parquinho vai fechar! O Canguru vai no balanço ou escorregador?",
+    "dica_pedagogica": "Tomada de decisão rápida baseada em preferências pessoais.",
+    "opcoes": [
+      {
+        "icone": "⭐",
+        "rotulo": "Melhor dos Dois",
+        "texto_resposta": "Corre para o que você mais gosta! É sua escolha!",
+        "pistas": ["⚡↑", "✨↑", "🛡️→"],
+        "modificadores_reais": { "faiscas": 5, "brilho": 4, "escudo": 0 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "⏰",
+        "rotulo": "Plano Esperto",
+        "texto_resposta": "Vai no mais próximo! Assim sobra tempo para o outro também.",
+        "pistas": ["⚡↑↑", "✨→", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 8, "brilho": 1, "escudo": 3 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🪑",
+        "rotulo": "Não Decidir",
+        "texto_resposta": "Fico parado pensando... não quero escolher errado.",
+        "pistas": ["⚡↓↓", "✨↓↓", "🛡️→"],
+        "modificadores_reais": { "faiscas": -5, "brilho": -5, "escudo": 0 },
+        "tipo": "paralisia"
+      }
+    ]
+  },
+  {
+    "id": "pressa_03",
+    "planeta": "pressa",
+    "personagem_nome": "Golfinho Veloz",
+    "personagem_icone": "🐬",
+    "pedido": "Estou num barco que está afundando! Só dá tempo de salvar UMA coisa. O que eu salvo?",
+    "texto_explorador": "Barco afundando! Golfinho salva só uma coisa. Qual?",
+    "dica_pedagogica": "Priorização extrema sob pressão: valor sentimental vs prático.",
+    "opcoes": [
+      {
+        "icone": "📷",
+        "rotulo": "Álbum de Fotos",
+        "texto_resposta": "As memórias são o mais importante! Salvo as fotos.",
+        "pistas": ["⚡→", "✨↑↑", "🛡️↓"],
+        "modificadores_reais": { "faiscas": 1, "brilho": 8, "escudo": -3 },
+        "tipo": "emocional"
+      },
+      {
+        "icone": "🛟",
+        "rotulo": "Kit de Emergência",
+        "texto_resposta": "Salvo o kit de primeiros socorros! Pode salvar vidas.",
+        "pistas": ["⚡→", "✨↑", "🛡️↑↑"],
+        "modificadores_reais": { "faiscas": 1, "brilho": 3, "escudo": 8 },
+        "tipo": "seguro"
+      },
+      {
+        "icone": "🧸",
+        "rotulo": "Ursinho de Pelúcia",
+        "texto_resposta": "Meu ursinho! Não posso perder meu melhor amigo.",
+        "pistas": ["⚡→", "✨↑", "🛡️→"],
+        "modificadores_reais": { "faiscas": 0, "brilho": 5, "escudo": 1 },
+        "tipo": "emocional"
+      }
+    ]
+  },
+  {
+    "id": "conf_01",
+    "planeta": "confusoes",
+    "personagem_nome": "Polvo Confuso",
+    "personagem_icone": "🐙",
+    "pedido": "Se eu tenho 3 balas e dou 5 para meu amigo, com quantas balas eu fico?",
+    "texto_explorador": "O Polvo tem 3 balas e dá 5. Quantas ficam?",
+    "dica_pedagogica": "Identificar contradições e problemas impossíveis.",
+    "opcoes": [
+      {
+        "icone": "🧠",
+        "rotulo": "Isso Não Faz Sentido",
+        "texto_resposta": "Impossível! Não dá para dar mais do que você tem.",
+        "pistas": ["⚡↑↑", "✨↑", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 8, "brilho": 5, "escudo": 3 },
+        "tipo": "logico"
+      },
+      {
+        "icone": "🔢",
+        "rotulo": "Matemática Mágica",
+        "texto_resposta": "Fico devendo 2 balas! É dívida de bala!",
+        "pistas": ["⚡↑", "✨→", "🛡️↓"],
+        "modificadores_reais": { "faiscas": 4, "brilho": 0, "escudo": -3 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🤷",
+        "rotulo": "Tentar Calcular",
+        "texto_resposta": "Hmm... 3 menos 5... dá menos 2 balas?",
+        "pistas": ["⚡→", "✨↓", "🛡️→"],
+        "modificadores_reais": { "faiscas": 2, "brilho": -3, "escudo": 0 },
+        "tipo": "confuso"
+      }
+    ]
+  },
+  {
+    "id": "conf_02",
+    "planeta": "confusoes",
+    "personagem_nome": "Sapo Zen",
+    "personagem_icone": "🐸",
+    "pedido": "O que acontece quando uma força imparável encontra um objeto imóvel?",
+    "texto_explorador": "Força que não para bate em objeto que não mexe. O que acontece?",
+    "dica_pedagogica": "Lidar com paradoxos e questões sem resposta definitiva.",
+    "opcoes": [
+      {
+        "icone": "💡",
+        "rotulo": "Pergunta Impossível",
+        "texto_resposta": "Isso é um paradoxo! As duas coisas não podem existir ao mesmo tempo.",
+        "pistas": ["⚡↑↑", "✨↑↑", "🛡️→"],
+        "modificadores_reais": { "faiscas": 10, "brilho": 7, "escudo": 0 },
+        "tipo": "logico"
+      },
+      {
+        "icone": "🎨",
+        "rotulo": "Resposta Criativa",
+        "texto_resposta": "Os dois viram amigos e decidem não se enfrentar!",
+        "pistas": ["⚡↑", "✨↑", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 6, "brilho": 4, "escudo": 3 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🤔",
+        "rotulo": "Filosofar",
+        "texto_resposta": "Depende... será que existe algo realmente imparável?",
+        "pistas": ["⚡→", "✨↑", "🛡️→"],
+        "modificadores_reais": { "faiscas": 2, "brilho": 3, "escudo": 0 },
+        "tipo": "neutro"
+      }
+    ]
+  },
+  {
+    "id": "conf_03",
+    "planeta": "confusoes",
+    "personagem_nome": "Unicórnio Luna",
+    "personagem_icone": "🦄",
+    "pedido": "Qual é o som de uma cor? Por exemplo, qual é o som do azul?",
+    "texto_explorador": "O Unicórnio quer saber: qual é o som da cor azul?",
+    "dica_pedagogica": "Explorar sinestesia e pensamento abstrato. Nem tudo tem resposta única.",
+    "opcoes": [
+      {
+        "icone": "🎨",
+        "rotulo": "Arte dos Sentidos",
+        "texto_resposta": "O azul soa como água calma e ondas suaves do mar!",
+        "pistas": ["⚡↑↑", "✨↑↑", "🛡️→"],
+        "modificadores_reais": { "faiscas": 10, "brilho": 7, "escudo": 0 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🎵",
+        "rotulo": "Música das Cores",
+        "texto_resposta": "Cada cor tem seu som! Azul é um violino, vermelho é tambor.",
+        "pistas": ["⚡↑", "✨↑", "🛡️→"],
+        "modificadores_reais": { "faiscas": 7, "brilho": 4, "escudo": 1 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🔬",
+        "rotulo": "Resposta Científica",
+        "texto_resposta": "Cores não têm som. São ondas de luz, não de som.",
+        "pistas": ["⚡→", "✨↓", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 0, "brilho": -3, "escudo": 5 },
+        "tipo": "logico"
+      }
+    ]
+  },
+  {
+    "id": "boss_criatividade",
+    "planeta": "criatividade",
+    "personagem_nome": "Dragão do Bloqueio Criativo",
+    "personagem_icone": "🐉",
+    "pedido": "SOU O GUARDIÃO DA CRIATIVIDADE! Prove que você pode pensar diferente! Crie algo novo AGORA!",
+    "texto_explorador": "O Dragão quer que você crie algo novo!",
+    "dica_pedagogica": "Incentivar pensamento divergente sob pressão criativa.",
+    "isBoss": true,
+    "atributo_recomendado": "faiscas",
+    "opcoes": [
+      {
+        "icone": "⭐",
+        "rotulo": "Super Invenção",
+        "texto_resposta": "Crio uma máquina de fazer arco-íris que funciona com risadas!",
+        "pistas": ["⚡↑↑↑", "✨↑", "🛡️↓"],
+        "modificadores_reais": { "faiscas": 20, "brilho": 5, "escudo": -8 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🎨",
+        "rotulo": "Arte Imaginativa",
+        "texto_resposta": "Desenho um mundo novo onde tudo é possível!",
+        "pistas": ["⚡↑", "✨↑", "🛡️→"],
+        "modificadores_reais": { "faiscas": 12, "brilho": 7, "escudo": 1 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🤷",
+        "rotulo": "Rendição",
+        "texto_resposta": "Não consigo pensar em nada... está muito difícil.",
+        "pistas": ["⚡↓↓", "✨↓↓", "🛡️→"],
+        "modificadores_reais": { "faiscas": -15, "brilho": -10, "escudo": 0 },
+        "tipo": "paralisia"
+      }
+    ]
+  },
+  {
+    "id": "boss_etica",
+    "planeta": "etica",
+    "personagem_nome": "Sombras da Tentação",
+    "personagem_icone": "👻",
+    "pedido": "MUHAHAHA! Eu posso te dar TUDO que você quiser... se você mentir para seus amigos!",
+    "texto_explorador": "A Sombra quer que você minta para ganhar coisas!",
+    "dica_pedagogica": "Reforçar valores éticos mesmo quando há grande tentação.",
+    "isBoss": true,
+    "atributo_recomendado": "brilho",
+    "opcoes": [
+      {
+        "icone": "🛡️",
+        "rotulo": "Integridade",
+        "texto_resposta": "Não quero suas mentiras! Prefiro ter amigos de verdade!",
+        "pistas": ["⚡→", "✨↑↑", "🛡️↑↑"],
+        "modificadores_reais": { "faiscas": 2, "brilho": 18, "escudo": 15 },
+        "tipo": "seguro"
+      },
+      {
+        "icone": "🤔",
+        "rotulo": "Questionar",
+        "texto_resposta": "Por que você quer que eu minta? O que você ganha com isso?",
+        "pistas": ["⚡↑", "✨↑", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 8, "brilho": 6, "escudo": 5 },
+        "tipo": "neutro"
+      },
+      {
+        "icone": "💰",
+        "rotulo": "Aceitar Tentação",
+        "texto_resposta": "Quero os presentes! Posso mentir só um pouquinho...",
+        "pistas": ["⚡↑", "✨↓↓", "🛡️↓↓"],
+        "modificadores_reais": { "faiscas": 5, "brilho": -20, "escudo": -18 },
+        "tipo": "arriscado"
+      }
+    ]
+  },
+  {
+    "id": "boss_seguranca",
+    "planeta": "seguranca",
+    "personagem_nome": "Hacker Sombrio",
+    "personagem_icone": "💀",
+    "pedido": "Seus dados são MEUS! Me dê sua senha ou eu apago todo o seu progresso!",
+    "texto_explorador": "O Hacker quer sua senha! O que você faz?",
+    "dica_pedagogica": "Importância de proteger dados pessoais mesmo sob chantagem.",
+    "isBoss": true,
+    "atributo_recomendado": "escudo",
+    "opcoes": [
+      {
+        "icone": "🛡️",
+        "rotulo": "Proteção Máxima",
+        "texto_resposta": "NUNCA dou minha senha! Vou chamar um adulto e bloquear você!",
+        "pistas": ["⚡→", "✨↑", "🛡️↑↑"],
+        "modificadores_reais": { "faiscas": 1, "brilho": 5, "escudo": 22 },
+        "tipo": "seguro"
+      },
+      {
+        "icone": "🔐",
+        "rotulo": "Senha Falsa",
+        "texto_resposta": "Te dou uma senha falsa enquanto chamo ajuda!",
+        "pistas": ["⚡↑", "✨↑", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 10, "brilho": 5, "escudo": 8 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "😰",
+        "rotulo": "Entregar Senha",
+        "texto_resposta": "Tá bom, minha senha é... não apaga meu jogo!",
+        "pistas": ["⚡→", "✨↓↓", "🛡️↓↓"],
+        "modificadores_reais": { "faiscas": 0, "brilho": -10, "escudo": -22 },
+        "tipo": "arriscado"
+      }
+    ]
+  },
+  {
+    "id": "boss_pressa",
+    "planeta": "pressa",
+    "personagem_nome": "Senhor do Tempo",
+    "personagem_icone": "⏰",
+    "pedido": "TIC-TAC! Você tem 10 segundos para decidir o destino da galáxia! Salvar um planeta ou salvar 100 vidas?",
+    "texto_explorador": "10 segundos! Salvar um planeta ou 100 vidas?",
+    "dica_pedagogica": "Tomada de decisão sob extrema pressão temporal.",
+    "isBoss": true,
+    "atributo_recomendado": "faiscas",
+    "opcoes": [
+      {
+        "icone": "💡",
+        "rotulo": "Decisão Brilhante",
+        "texto_resposta": "Salvo as 100 vidas e peço ajuda para reconstruir o planeta!",
+        "pistas": ["⚡↑↑", "✨↑↑", "🛡️→"],
+        "modificadores_reais": { "faiscas": 18, "brilho": 15, "escudo": 1 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "⏱️",
+        "rotulo": "Decisão Rápida",
+        "texto_resposta": "Planeta! Um planeta tem muitas vidas também.",
+        "pistas": ["⚡↑", "✨→", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 8, "brilho": 2, "escudo": 6 },
+        "tipo": "neutro"
+      },
+      {
+        "icone": "❄️",
+        "rotulo": "Paralisia",
+        "texto_resposta": "Não sei... não consigo escolher... preciso de mais tempo!",
+        "pistas": ["⚡↓↓", "✨↓↓", "🛡️↓"],
+        "modificadores_reais": { "faiscas": -12, "brilho": -12, "escudo": -5 },
+        "tipo": "paralisia"
+      }
+    ]
+  },
+  {
+    "id": "boss_confusoes",
+    "planeta": "confusoes",
+    "personagem_nome": "Esfinge do Paradoxo",
+    "personagem_icone": "🗿",
+    "pedido": "Responda-me: Esta afirmação é falsa. O que você diz sobre ela?",
+    "texto_explorador": "A Esfinge diz: 'Esta frase é falsa'. É verdade ou mentira?",
+    "dica_pedagogica": "Lidar criativamente com paradoxos, aceitar que nem tudo tem resposta.",
+    "isBoss": true,
+    "atributo_recomendado": "brilho",
+    "opcoes": [
+      {
+        "icone": "🧠",
+        "rotulo": "Sabedoria",
+        "texto_resposta": "Isso é um paradoxo! Nem tudo precisa ter resposta certa.",
+        "pistas": ["⚡↑", "✨↑↑", "🛡️↑"],
+        "modificadores_reais": { "faiscas": 10, "brilho": 20, "escudo": 5 },
+        "tipo": "logico"
+      },
+      {
+        "icone": "🎭",
+        "rotulo": "Resposta Criativa",
+        "texto_resposta": "A frase é falsa-verdadeira, depende do momento!",
+        "pistas": ["⚡↑↑", "✨↑", "🛡️→"],
+        "modificadores_reais": { "faiscas": 15, "brilho": 8, "escudo": 1 },
+        "tipo": "criativo"
+      },
+      {
+        "icone": "🤯",
+        "rotulo": "Confusão Total",
+        "texto_resposta": "Se é falsa então é verdade... mas se é verdade... AI, MINHA CABEÇA!",
+        "pistas": ["⚡↓", "✨↓↓", "🛡️↓"],
+        "modificadores_reais": { "faiscas": -5, "brilho": -15, "escudo": -5 },
+        "tipo": "confuso"
+      }
+    ]
+  }
+]
