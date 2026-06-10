@@ -19,6 +19,8 @@ function defaultState() {
       escudo: 0
     },
     stars: 0,
+    energia: 3, // reroll currency, replenishes per planet
+    avatar: null, // emoji chosen by player
     campaign: {
       currentPlanet: 1,
       currentHouse: 0,

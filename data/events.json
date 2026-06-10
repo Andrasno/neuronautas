@@ -28,5 +28,15 @@
   { "id": "ev_27", "descricao": "🕊️ Mensageiro da Paz abençoa o caminho!", "efeito": { "faiscas": 2, "brilho": 6, "escudo": 6, "estrelas": 0 } },
   { "id": "ev_28", "descricao": "🌌 Nebulosa dos Sonhos inspira!", "efeito": { "faiscas": 9, "brilho": 4, "escudo": 0, "estrelas": 0 } },
   { "id": "ev_29", "descricao": "🧩 Quebra-cabeça Impossível aparece!", "efeito": { "faiscas": -6, "brilho": 0, "escudo": -2, "estrelas": 0 } },
-  { "id": "ev_30", "descricao": "🎉 Festa Surpresa dos Neuronautas!", "efeito": { "faiscas": 4, "brilho": 4, "escudo": 4, "estrelas": 2 } }
+  { "id": "ev_30", "descricao": "🎉 Festa Surpresa dos Neuronautas!", "efeito": { "faiscas": 4, "brilho": 4, "escudo": 4, "estrelas": 2 } },
+  { "id": "ev_bncc_01", "descricao": "🌍 Você passa pela Terra e vê água evaporando dos oceanos! Ciclo da água! +5 Brilho", "efeito": { "faiscas": 0, "brilho": 5, "escudo": 0, "estrelas": 0 } },
+  { "id": "ev_bncc_02", "descricao": "🦋 Uma lagarta se transforma em borboleta na sua frente! Metamorfose! +4 Brilho", "efeito": { "faiscas": 0, "brilho": 4, "escudo": 0, "estrelas": 0 } },
+  { "id": "ev_bncc_03", "descricao": "🌱 Semente cósmica brota! Fotossíntese em ação! +5 Faíscas", "efeito": { "faiscas": 5, "brilho": 0, "escudo": 0, "estrelas": 0 } },
+  { "id": "ev_bncc_04", "descricao": "🪐 Anéis de Saturno revelam padrão matemático! Sequência de Fibonacci! +6 Faíscas", "efeito": { "faiscas": 6, "brilho": 0, "escudo": 0, "estrelas": 0 } },
+  { "id": "ev_bncc_05", "descricao": "🔢 Chuva de números primos! 2, 3, 5, 7, 11... +3 Faíscas e +2 Brilho", "efeito": { "faiscas": 3, "brilho": 2, "escudo": 0, "estrelas": 0 } },
+  { "id": "ev_bncc_06", "descricao": "📖 Livro Mágico ensina palavra nova: 'solidariedade'! +3 Brilho +1 Estrela", "efeito": { "faiscas": 0, "brilho": 3, "escudo": 0, "estrelas": 1 } },
+  { "id": "ev_bncc_07", "descricao": "🧲 Ímã Espacial atrai conhecimento sobre polos magnéticos! +4 Faíscas +2 Escudo", "efeito": { "faiscas": 4, "brilho": 0, "escudo": 2, "estrelas": 0 } },
+  { "id": "ev_bncc_08", "descricao": "🌙 Eclipse lunar revela como as sombras funcionam! Ciência! +3 Brilho", "efeito": { "faiscas": 0, "brilho": 3, "escudo": 0, "estrelas": 0 } },
+  { "id": "ev_bncc_09", "descricao": "🗺️ Mapa Estelar mostra continentes da Terra! Geografia! +3 Brilho +2 Escudo", "efeito": { "faiscas": 0, "brilho": 3, "escudo": 2, "estrelas": 0 } },
+  { "id": "ev_bncc_10", "descricao": "🎵 Ondas sonoras de música interestelar! Física do som! +5 Faíscas", "efeito": { "faiscas": 5, "brilho": 0, "escudo": 0, "estrelas": 0 } }
 ]

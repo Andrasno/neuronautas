@@ -9,6 +9,7 @@ test.describe('Game Flow', () => {
 
     // Select profile
     await page.locator('.explorador-btn').click();
+    await page.locator('.avatar-btn').first().click();
 
     // Wait for game screen
     await expect(page.locator('.game-header')).toBeVisible({ timeout: 10000 });
@@ -35,6 +36,7 @@ test.describe('Game Flow', () => {
   test('attribute bars show correct initial values', async ({ page }) => {
     await page.goto('/');
     await page.locator('.explorador-btn').click();
+    await page.locator('.avatar-btn').first().click();
 
     await expect(page.locator('.attr-bar-container')).toHaveCount(3, { timeout: 10000 });
 
@@ -48,6 +50,7 @@ test.describe('Game Flow', () => {
   test('buttons for album and menu exist', async ({ page }) => {
     await page.goto('/');
     await page.locator('.explorador-btn').click();
+    await page.locator('.avatar-btn').first().click();
 
     await expect(page.locator('#btn-album')).toBeVisible({ timeout: 10000 });
     await expect(page.locator('#btn-menu')).toBeVisible();

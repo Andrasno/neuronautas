@@ -7,6 +7,7 @@ test.describe('Save and Load', () => {
   test('game state persists after page reload', async ({ page }) => {
     await page.goto('/');
     await page.locator('.explorador-btn').click();
+    await page.locator('.avatar-btn').first().click();
 
     // Wait for game to load
     await expect(page.locator('.game-header')).toBeVisible({ timeout: 10000 });

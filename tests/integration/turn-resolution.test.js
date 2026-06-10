@@ -119,13 +119,15 @@ describe('Turn resolution integration', () => {
     expect(checkGameOver(attrs, 'explorador')).toBe(true);
   });
 
-  it('explorador pistas are icons only', () => {
+  it('explorador pistas are visual stars only (no text)', () => {
     for (const card of cardsData) {
       for (const opcao of card.opcoes) {
         const pistas = getDisplayPistas(opcao, 'explorador');
         expect(pistas).not.toContain('Faíscas');
         expect(pistas).not.toContain('Brilho');
         expect(pistas).not.toContain('Escudo');
+        // Should use visual indicators (⬤, ◯, ▼) instead of arrows
+        expect(pistas).toMatch(/[⬤◯▼]/);
       }
     }
   });

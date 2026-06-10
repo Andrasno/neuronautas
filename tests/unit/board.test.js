@@ -29,14 +29,14 @@ function mockState(profile, planet = 1, house = 0, defeatedBosses = []) {
 }
 
 describe('generateBoard', () => {
-  it('creates 15 tiles for explorador', () => {
+  it('creates correct tile count for explorador (8 planets x 3)', () => {
     const tiles = generateBoard('explorador');
-    expect(tiles).toHaveLength(15);
+    expect(tiles).toHaveLength(24); // 8 planets x 3 = 24
   });
 
-  it('creates 30 tiles for navegante', () => {
+  it('creates correct tile count for navegante (8 planets x 6)', () => {
     const tiles = generateBoard('navegante');
-    expect(tiles).toHaveLength(30);
+    expect(tiles).toHaveLength(48); // 8 planets x 6 = 48
   });
 
   it('each tile has type, index, planetId', () => {
@@ -47,7 +47,7 @@ describe('generateBoard', () => {
       expect(tile).toHaveProperty('planetId');
       expect(tile.index).toBeGreaterThanOrEqual(0);
       expect(tile.planetId).toBeGreaterThanOrEqual(1);
-      expect(tile.planetId).toBeLessThanOrEqual(5);
+      expect(tile.planetId).toBeLessThanOrEqual(8);
     });
   });
 
@@ -94,10 +94,10 @@ describe('generateBoard', () => {
 describe('generateFreeBoard', () => {
   it('creates correct tile count', () => {
     const expTiles = generateFreeBoard('explorador');
-    expect(expTiles).toHaveLength(15);
+    expect(expTiles).toHaveLength(24);
 
     const navTiles = generateFreeBoard('navegante');
-    expect(navTiles).toHaveLength(30);
+    expect(navTiles).toHaveLength(48);
   });
 
   it('ends each planet segment with chefao', () => {

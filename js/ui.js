@@ -5,6 +5,7 @@
 
 import { createElement, formatModifier } from './utils.js';
 import { ATTRIBUTES, PLANETS, PROFILES } from './profile.js';
+import { getDisplayPistas } from './cards.js';
 
 let appRoot = null;
 
@@ -57,6 +58,41 @@ export function renderProfileSelector(onSelect) {
   root.appendChild(container);
 }
 
+export const AVATARS = [
+  { id: 'inventor', emoji: '🧑‍🚀', nome: 'Inventor', desc: 'Cria coisas novas' },
+  { id: 'guardiao', emoji: '🦸', nome: 'Guardião', desc: 'Protege os amigos' },
+  { id: 'explorador', emoji: '🔭', nome: 'Explorador', desc: 'Descobre o universo' },
+  { id: 'diplomata', emoji: '🕊️', nome: 'Diplomata', desc: 'Resolve conversando' }
+];
+
+/**
+ * Render avatar selection after profile choice.
+ * @param {Function} onSelect - callback(avatarEmoji)
+ */
+export function renderAvatarPicker(onSelect) {
+  const root = getRoot();
+  root.innerHTML = '';
+
+  const container = createElement('div', { className: 'profile-selector' },
+    createElement('h1', { className: 'game-title' }, 'Escolha seu Neuronauta'),
+    createElement('p', { className: 'age-question' }, 'Quem vai viajar pela galáxia?'),
+    createElement('div', { className: 'avatar-grid' },
+      ...AVATARS.map(a =>
+        createElement('button', {
+          className: 'avatar-btn',
+          onClick: () => onSelect(a.emoji)
+        },
+          createElement('span', { className: 'avatar-emoji' }, a.emoji),
+          createElement('span', { className: 'avatar-nome' }, a.nome),
+          createElement('span', { className: 'avatar-desc' }, a.desc)
+        )
+      )
+    )
+  );
+
+  root.appendChild(container);
+}
+
 /**
  * Render the game screen: attribute bars, game header, dice area, board placeholder.
  * @param {Object} state - Full GameState
@@ -98,27 +134,48 @@ export function renderGameScreen(state) {
     attrPanel.appendChild(bar);
   }
 
-  // Stars display
-  const starsDisplay = createElement('div', { className: 'stars-display' },
-    createElement('span', { className: 'stars-icon' }, '⭐'),
-    createElement('span', { className: 'stars-count' }, String(state.stars))
+  // Resource bar: stars + energia + mochila
+  const resourceBar = createElement('div', { className: 'resource-bar' },
+    createElement('div', { className: 'stars-display', id: 'stars-display' },
+      createElement('span', { className: 'stars-icon' }, '⭐'),
+      createElement('span', { className: 'stars-count' }, String(state.stars))
+    ),
+    createElement('div', { className: 'energia-display', id: 'energia-display' },
+      createElement('span', { className: 'energia-icon' }, '⚡'),
+      createElement('span', { className: 'energia-count' }, String(state.energia || 0))
+    ),
+    createElement('div', { className: 'mochila-badge', id: 'mochila-badge', title: 'Mochila de Ideias' },
+      createElement('span', {}, '🎒'),
+      createElement('span', { className: 'mochila-count', id: 'mochila-count' },
+        (state.mochila?.storedIdea ? 1 : 0) + (state.mochila?.storedIdea2 ? 1 : 0) > 0
+          ? String((state.mochila?.storedIdea ? 1 : 0) + (state.mochila?.storedIdea2 ? 1 : 0))
+          : ''
+      )
+    )
   );
 
-  // Dice area (placeholder - actual dice rendered by renderDiceArea)
+  // Dice area
   const diceArea = createElement('div', { className: 'dice-area', id: 'dice-area' });
 
-  // Board area (placeholder - actual board rendered by renderBoard)
+  // Board area (hub view by default)
   const boardArea = createElement('div', { className: 'board-area', id: 'board-area' });
 
-  // Neuronauta visual
-  const character = createElement('div', { className: 'neuronauta-character', id: 'neuronauta' },
-    createElement('div', { className: 'neuronauta-body' }, '💡')
+  // Neuronauta + companion (use avatar if chosen)
+  const avatarEmoji = state.avatar || '💡';
+  const characterRow = createElement('div', { className: 'character-row' },
+    createElement('div', { className: 'neuronauta-character', id: 'neuronauta' },
+      createElement('div', { className: 'neuronauta-body' }, avatarEmoji)
+    ),
+    createElement('div', { className: 'companion', id: 'companion' },
+      createElement('div', { className: 'companion-body', id: 'companion-body' }, '🤖'),
+      createElement('div', { className: 'companion-bubble', id: 'companion-bubble' }, 'Vamos lá!')
+    )
   );
 
   root.appendChild(header);
   root.appendChild(attrPanel);
-  root.appendChild(starsDisplay);
-  root.appendChild(character);
+  root.appendChild(resourceBar);
+  root.appendChild(characterRow);
   root.appendChild(diceArea);
   root.appendChild(boardArea);
 }
@@ -350,38 +407,10 @@ export function renderCardModal(card, profileKey, onChoose, mochilaOpts = {}) {
   return overlay;
 }
 
-/** Get pistas display string based on profile */
+/** Get pistas display string based on profile (delegates to cards.js) */
 function getPistasDisplay(opcao, profileKey) {
-  if (profileKey === 'explorador') {
-    // Icons only
-    return opcao.pistas ? opcao.pistas.join(' ') : '';
-  }
-  // Navegante: vague text hint
-  if (!opcao.pistas) return 'Efeitos desconhecidos';
-  const hints = opcao.pistas.map(p => pistaToText(p));
-  return hints.join(', ');
-}
-
-/** Convert a single pista icon to a short text hint */
-function pistaToText(pista) {
-  const map = {
-    '⚡↑↑': 'Aumenta muito Faíscas',
-    '⚡↑': 'Aumenta Faíscas',
-    '⚡↓': 'Diminui Faíscas',
-    '⚡↓↓': 'Diminui muito Faíscas',
-    '⚡→': 'Faíscas estável',
-    '✨↑↑': 'Aumenta muito Brilho',
-    '✨↑': 'Aumenta Brilho',
-    '✨↓': 'Diminui Brilho',
-    '✨↓↓': 'Diminui muito Brilho',
-    '✨→': 'Brilho estável',
-    '🛡️↑↑': 'Aumenta muito Escudo',
-    '🛡️↑': 'Aumenta Escudo',
-    '🛡️↓': 'Diminui Escudo',
-    '🛡️↓↓': 'Diminui muito Escudo',
-    '🛡️→': 'Escudo estável'
-  };
-  return map[pista] || pista;
+  // Use the cards.js function which handles visual stars for Explorador
+  return getDisplayPistas(opcao, profileKey);
 }
 
 /**
@@ -450,4 +479,258 @@ export function updateAttributeBars(attributes) {
 export function updateStarsDisplay(stars) {
   const el = document.querySelector('.stars-count');
   if (el) el.textContent = String(stars);
+}
+
+/**
+ * Animate a star flying from source coordinates to the star counter.
+ * @param {number} sourceX - Viewport X of source
+ * @param {number} sourceY - Viewport Y of source
+ * @param {Function} onArrive - callback after star lands
+ */
+export function animateStarEarned(sourceX, sourceY, onArrive) {
+  const targetEl = document.querySelector('.stars-display');
+  if (!targetEl) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (onArrive) onArrive();
+    return;
+  }
+
+  const star = document.createElement('div');
+  star.style.cssText = `
+    position: fixed;
+    left: ${sourceX - 16}px;
+    top: ${sourceY - 16}px;
+    font-size: 2rem;
+    z-index: 300;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: scale(1);
+  `;
+  star.textContent = '⭐';
+  document.body.appendChild(star);
+
+  const targetRect = targetEl.getBoundingClientRect();
+  const targetX = targetRect.left + targetRect.width / 2 - 16;
+  const targetY = targetRect.top + targetRect.height / 2 - 16;
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      star.style.left = `${targetX}px`;
+      star.style.top = `${targetY}px`;
+      star.style.transform = 'scale(0.5)';
+      star.style.opacity = '0.8';
+    });
+  });
+
+  star.addEventListener('transitionend', () => {
+    star.remove();
+    targetEl.style.transform = 'scale(1.3)';
+    targetEl.style.transition = 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    requestAnimationFrame(() => {
+      targetEl.style.transform = 'scale(1)';
+    });
+    if (onArrive) onArrive();
+  });
+}
+
+/**
+ * Update energia display.
+ */
+export function updateEnergiaDisplay(energia) {
+  const el = document.querySelector('.energia-count');
+  if (el) el.textContent = String(energia);
+}
+
+/**
+ * Update mochila badge count.
+ */
+export function updateMochilaBadge(mochila) {
+  const el = document.querySelector('.mochila-count');
+  if (!el) return;
+  const count = (mochila?.storedIdea ? 1 : 0) + (mochila?.storedIdea2 ? 1 : 0);
+  el.textContent = count > 0 ? String(count) : '';
+  const badge = document.querySelector('.mochila-badge');
+  if (badge) {
+    badge.style.display = count > 0 ? 'flex' : 'flex'; // always show
+    badge.style.opacity = count > 0 ? '1' : '0.4';
+  }
+}
+
+/**
+ * Make the companion react with an emotion and message.
+ * @param {'celebrate'|'think'|'brave'|'warn'|'neutral'} emotion
+ * @param {string} message
+ */
+export function reactCompanion(emotion, message) {
+  const body = document.getElementById('companion-body');
+  const bubble = document.getElementById('companion-bubble');
+  if (!body || !bubble) return;
+
+  const expressions = {
+    celebrate: { icon: '🎉', anim: 'companion-bounce' },
+    think: { icon: '🤔', anim: 'companion-tilt' },
+    brave: { icon: '💪', anim: 'companion-grow' },
+    warn: { icon: '😰', anim: 'companion-shake' },
+    neutral: { icon: '🤖', anim: '' }
+  };
+
+  const expr = expressions[emotion] || expressions.neutral;
+  body.textContent = expr.icon;
+
+  // Reset animations
+  body.className = 'companion-body';
+  if (expr.anim) {
+    void body.offsetWidth; // force reflow
+    body.classList.add(expr.anim);
+  }
+
+  // Update bubble
+  bubble.textContent = message;
+  bubble.style.opacity = '1';
+  bubble.style.transform = 'scale(1)';
+
+  // Auto-hide bubble after delay
+  clearTimeout(body._bubbleTimer);
+  body._bubbleTimer = setTimeout(() => {
+    bubble.style.opacity = '0';
+    bubble.style.transform = 'scale(0.8)';
+  }, 2500);
+}
+
+/** Planet mission node icons */
+const MISSION_ICONS = { treino: '⭐', surpresa: '❓', evolucao: '🏪', chefao: '👑' };
+const MISSION_LABELS = { treino: 'Missão', surpresa: 'Surpresa', evolucao: 'Loja', chefao: 'Chefão' };
+
+/**
+ * Render planet hub view (circular mission nodes) instead of linear board.
+ * @param {Array} tiles - Planet tiles
+ * @param {number} currentPos - Current position
+ * @param {string} planetColor - CSS color
+ * @param {Function} onMissionClick - callback(index, type)
+ */
+export function renderPlanetHub(tiles, currentPos, planetColor, onMissionClick) {
+  const area = document.getElementById('board-area');
+  if (!area) return;
+  area.innerHTML = '';
+
+  const hub = createElement('div', { className: 'planet-hub' });
+  const surface = createElement('div', {
+    className: 'planet-surface',
+    style: `background: radial-gradient(circle at 40% 40%, ${planetColor}, ${planetColor}44)`
+  });
+
+  // Orbit ring
+  const orbit = createElement('div', { className: 'orbit-ring',
+    style: `border-color: ${planetColor}44`
+  });
+
+  // Position nodes in a circle
+  const cx = 50, cy = 50, radius = 38;
+  tiles.forEach((tile, idx) => {
+    const angle = (idx / tiles.length) * Math.PI * 2 - Math.PI / 2;
+    const x = cx + Math.cos(angle) * radius;
+    const y = cy + Math.sin(angle) * radius;
+    const isCurrent = idx === currentPos;
+    const isDone = idx < currentPos;
+    const isChefao = tile.type === 'chefao';
+
+    const node = createElement('div', {
+      className: `planet-node node-${tile.type}${isCurrent ? ' current' : ''}${isDone ? ' done' : ''}${isChefao ? ' boss-node' : ''}`,
+      style: `left:${x}%;top:${y}%`,
+      onClick: () => onMissionClick(idx, tile.type)
+    },
+      createElement('span', { className: 'node-icon' }, MISSION_ICONS[tile.type] || '?'),
+      createElement('span', { className: 'node-label' }, MISSION_LABELS[tile.type] || tile.type)
+    );
+
+    if (isCurrent) {
+      const marker = createElement('div', { className: 'node-marker' }, '📍');
+      node.appendChild(marker);
+    }
+
+    surface.appendChild(node);
+  });
+
+  hub.appendChild(surface);
+  area.appendChild(hub);
+}
+
+/**
+ * Speak text using SpeechSynthesis (if enabled).
+ */
+let narrationEnabled = false;
+export function toggleNarration() {
+  narrationEnabled = !narrationEnabled;
+  if (narrationEnabled) window.speechSynthesis?.cancel();
+  return narrationEnabled;
+}
+export function isNarrationEnabled() { return narrationEnabled; }
+
+export function speakText(text) {
+  if (!narrationEnabled || !window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'pt-BR';
+  u.rate = 0.85;
+  u.pitch = 1.1;
+  window.speechSynthesis.speak(u);
+}
+
+/**
+ * Render a drag-to-order mini-game for cards with tipo 'ordenar'.
+ * @param {Array} items - Items to reorder [{text, id}]
+ * @param {Function} onSubmit - callback(orderedIds)
+ */
+export function renderDragOrderModal(items, onSubmit) {
+  const content = createElement('div', { className: 'drag-order-modal' },
+    createElement('h3', {}, 'Organize na ordem certa!'),
+    createElement('p', { className: 'drag-hint' }, 'Arraste os itens para ordenar')
+  );
+
+  const list = createElement('div', { className: 'drag-order-list' });
+  // Shuffle initially
+  const shuffled = [...items].sort(() => Math.random() - 0.5);
+
+  shuffled.forEach((item, idx) => {
+    const itemEl = createElement('div', {
+      className: 'drag-item',
+      draggable: 'true',
+      dataset: { id: item.id }
+    }, `${idx + 1}. ${item.text}`);
+
+    itemEl.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text/plain', item.id);
+      itemEl.classList.add('dragging');
+    });
+    itemEl.addEventListener('dragend', () => itemEl.classList.remove('dragging'));
+    itemEl.addEventListener('dragover', e => {
+      e.preventDefault();
+      const dragging = list.querySelector('.dragging');
+      if (dragging && dragging !== itemEl) {
+        const rect = itemEl.getBoundingClientRect();
+        const midY = rect.top + rect.height / 2;
+        if (e.clientY < midY) {
+          list.insertBefore(dragging, itemEl);
+        } else {
+          list.insertBefore(dragging, itemEl.nextSibling);
+        }
+      }
+    });
+
+    list.appendChild(itemEl);
+  });
+
+  content.appendChild(list);
+
+  const submitBtn = createElement('button', {
+    className: 'drag-submit-btn',
+    onClick: () => {
+      const ordered = [...list.querySelectorAll('.drag-item')].map(el => el.dataset.id);
+      closeModal();
+      onSubmit(ordered);
+    }
+  }, '✅ Confirmar');
+
+  content.appendChild(submitBtn);
+  showModal(content, { closable: false });
 }

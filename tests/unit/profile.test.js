@@ -105,8 +105,8 @@ describe('PROFILES: navegante', () => {
 });
 
 describe('PLANETS', () => {
-  it('has 5 planets', () => {
-    expect(PLANETS).toHaveLength(5);
+  it('has 8 planets (5 base + 3 BNCC)', () => {
+    expect(PLANETS).toHaveLength(8);
   });
   it('each planet has id, key, name, color, theme', () => {
     PLANETS.forEach(p => {
@@ -130,8 +130,8 @@ describe('getPlanet', () => {
   it('returns planet for id 5', () => {
     expect(getPlanet(5).key).toBe('confusoes');
   });
-  it('returns null for id 6', () => {
-    expect(getPlanet(6)).toBeNull();
+  it('returns planet for id 6 (BNCC numbers)', () => {
+    expect(getPlanet(6).key).toBe('numeros');
   });
 });
 

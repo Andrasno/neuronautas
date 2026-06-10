@@ -28,6 +28,7 @@ test.describe('Responsive Layout', () => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/');
     await page.locator('.explorador-btn').click();
+    await page.locator('.avatar-btn').first().click();
 
     await expect(page.locator('.game-header')).toBeVisible({ timeout: 10000 });
     await expect(page.locator('.board-area')).toBeVisible();

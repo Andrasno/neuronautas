@@ -72,14 +72,15 @@ export function getCardText(card, profileKey) {
 
 /**
  * Get the pistas (hints) display for an option, formatted per profile.
- * - explorador: icon symbols only (e.g., "⚡↑ ✨→ 🛡️↓")
+ * - explorador: visual stars (●●● = big boost, ●○○ = small boost, ○○○ = no change, ▼▼▼ = big penalty)
  * - navegante: short vague text hints
  */
 export function getDisplayPistas(opcao, profileKey) {
+  const mods = opcao.modificadores_reais || {};
   const pistas = opcao.pistas || [];
 
   if (profileKey === 'explorador') {
-    return pistas.join(' ');
+    return getVisualStars(mods);
   }
 
   // Navegante: convert pistas to vague text
@@ -106,6 +107,51 @@ export function getDisplayPistas(opcao, profileKey) {
   }
 
   return parts.length > 0 ? parts.join(', ') : 'Efeitos desconhecidos';
+}
+
+/**
+ * Convert modifiers to visual star indicators for ages 6-8.
+ * ● = positive/filled, ○ = neutral/empty, ▼ = negative/danger
+ * Magnitude: 0 = ○○○, 1-3 = ●○○, 4-6 = ●●○, 7+ = ●●●
+ * Negative: -1 to -3 = ▼○○, -4 to -6 = ▼▼○, -7+ = ▼▼▼
+ */
+function getVisualStars(mods) {
+  const attrs = ['faiscas', 'brilho', 'escudo'];
+  const icons = { faiscas: '⚡', brilho: '✨', escudo: '🛡️' };
+  const parts = [];
+
+  for (const key of attrs) {
+    const v = mods[key] || 0;
+    const icon = icons[key];
+    if (v >= 7) parts.push(`${icon}⬤⬤⬤`);
+    else if (v >= 4) parts.push(`${icon}⬤⬤◯`);
+    else if (v >= 1) parts.push(`${icon}⬤◯◯`);
+    else if (v === 0) parts.push(`${icon}◯◯◯`);
+    else if (v >= -3) parts.push(`${icon}▼◯◯`);
+    else if (v >= -6) parts.push(`${icon}▼▼◯`);
+    else parts.push(`${icon}▼▼▼`);
+  }
+  return parts.join(' ');
+}
+
+/**
+ * Generate narrative feedback explaining why modifiers happened.
+ */
+export function getNarrativeFeedback(opcao, modifiers) {
+  const tipo = opcao.tipo || 'neutro';
+  const feedback = {
+    criativo: 'Sua ideia criativa gerou faíscas, mas teve um pequeno risco!',
+    seguro: 'Você escolheu o caminho mais seguro. Seu escudo está mais forte!',
+    neutro: 'Você fez uma pergunta antes de decidir. Isso mostra sabedoria!',
+    arriscado: 'Foi uma escolha ousada! Às vezes o risco traz recompensa e perigo.',
+    empatico: 'Você colocou o amigo em primeiro lugar. Isso fortalece laços!',
+    egoista: 'Você focou em si mesmo. Isso pode afastar os outros.',
+    logico: 'Você usou a lógica! Seu raciocínio está afiado.',
+    paralisia: 'Ficar parado também tem consequências. Tente decidir da próxima vez!',
+    emocional: 'Você seguiu seu coração! Emoções também importam.',
+    confuso: 'É confuso mesmo! Nem toda pergunta tem resposta fácil.'
+  };
+  return feedback[tipo] || 'Cada escolha tem consequências. Continue explorando!';
 }
 
 /**

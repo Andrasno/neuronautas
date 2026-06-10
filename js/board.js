@@ -2,7 +2,7 @@
  * Board generation, tile management, movement logic, and dice agency.
  */
 
-import { getProfile } from './profile.js';
+import { getProfile, PLANETS } from './profile.js';
 
 export const TILE_TYPES = {
   TREINO: 'treino',
@@ -21,7 +21,7 @@ export function generateBoard(profileKey) {
 
   const tiles = [];
   const pattern = profile.getTilePattern();
-  const numPlanets = 5;
+  const numPlanets = PLANETS.length; // dynamic: 5 + BNCC planets
 
   for (let planet = 1; planet <= numPlanets; planet++) {
     for (let i = 0; i < pattern.length; i++) {
@@ -65,7 +65,7 @@ export function generateFreeBoard(profileKey, planetOverride = null) {
   const profile = getProfile(profileKey);
   if (!profile) throw new Error(`Unknown profile: ${profileKey}`);
 
-  const numPlanets = planetOverride ? 1 : 5;
+  const numPlanets = planetOverride ? 1 : PLANETS.length;
   const planetStart = planetOverride || 1;
   const tiles = [];
 

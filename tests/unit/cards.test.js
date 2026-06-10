@@ -122,10 +122,12 @@ describe('cards.js', () => {
   });
 
   describe('getDisplayPistas', () => {
-    it('explorador: shows icons only', () => {
+    it('explorador: shows visual star indicators', () => {
       const pistas = getDisplayPistas(sampleCards[0].opcoes[0], 'explorador');
-      expect(pistas).toContain('⚡↑↑');
-      expect(pistas).toContain('✨↑');
+      // Visual stars ⬤◯▼ instead of arrows ↑↓→
+      expect(pistas).toContain('⬤');
+      expect(pistas).toContain('⚡');
+      expect(pistas).toContain('✨');
       expect(pistas).not.toContain('Faíscas'); // no text labels
     });
 

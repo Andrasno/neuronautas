@@ -708,5 +708,89 @@
         "tipo": "confuso"
       }
     ]
+  },
+  {
+    "id": "mat_01", "planeta": "numeros", "isBoss": false, "personagem_nome": "Astronauta Númerico", "personagem_icone": "🧮",
+    "pedido": "Tenho 3 naves e cada nave tem 5 astronautas. Quantos astronautas eu tenho ao todo?",
+    "texto_explorador": "3 naves, 5 astronautas em cada. Quantos astronautas?",
+    "dica_pedagogica": "BNCC EF02MA07: multiplicação como adição repetida.",
+    "opcoes": [
+      { "icone": "⭐", "rotulo": "15 astronautas", "texto_resposta": "3 grupos de 5 dá 15! 5+5+5 = 15.",
+        "pistas": ["⚡↑↑", "✨↑", "🛡️→"], "modificadores_reais": { "faiscas": 8, "brilho": 3, "escudo": 1 }, "tipo": "correto" },
+      { "icone": "🔢", "rotulo": "8 astronautas", "texto_resposta": "3 + 5 = 8 astronautas!",
+        "pistas": ["⚡→", "✨→", "🛡️↑"], "modificadores_reais": { "faiscas": 1, "brilho": 0, "escudo": 3 }, "tipo": "erro_soma" },
+      { "icone": "🤔", "rotulo": "53 astronautas", "texto_resposta": "3 e 5 juntos formam 53!",
+        "pistas": ["⚡→", "✨↓", "🛡️↑"], "modificadores_reais": { "faiscas": 0, "brilho": -2, "escudo": 2 }, "tipo": "erro_concatenacao" }
+    ]
+  },
+  {
+    "id": "mat_02", "planeta": "numeros", "isBoss": false, "personagem_nome": "Robô Calculador", "personagem_icone": "🤖",
+    "pedido": "Se eu dividir 12 cristais de energia entre 4 naves igualmente, quantos cristais cada nave recebe?",
+    "texto_explorador": "12 cristais para 4 naves. Quantos cada nave?",
+    "dica_pedagogica": "BNCC EF03MA08: divisão como repartição igualitária.",
+    "opcoes": [
+      { "icone": "⭐", "rotulo": "3 cristais", "texto_resposta": "12 dividido por 4 é igual a 3!",
+        "pistas": ["⚡↑↑", "✨↑", "🛡️→"], "modificadores_reais": { "faiscas": 8, "brilho": 3, "escudo": 0 }, "tipo": "correto" },
+      { "icone": "🔢", "rotulo": "4 cristais", "texto_resposta": "Divide o total pelo número de naves? Dá 4!",
+        "pistas": ["⚡→", "✨→", "🛡️↑"], "modificadores_reais": { "faiscas": 1, "brilho": 0, "escudo": 2 }, "tipo": "erro_inversao" },
+      { "icone": "🤔", "rotulo": "8 cristais", "texto_resposta": "12 menos 4 é 8 cristais para cada!",
+        "pistas": ["⚡→", "✨↓", "🛡️→"], "modificadores_reais": { "faiscas": 0, "brilho": -2, "escudo": 0 }, "tipo": "erro_operacao" }
+    ]
+  },
+  {
+    "id": "pt_01", "planeta": "palavras", "isBoss": false, "personagem_nome": "Letrinha Saltitante", "personagem_icone": "📝",
+    "pedido": "Qual dessas palavras está escrita CORRETAMENTE?",
+    "texto_explorador": "Qual palavra está certa?",
+    "dica_pedagogica": "BNCC EF02LP02: ortografia regular.",
+    "opcoes": [
+      { "icone": "⭐", "rotulo": "BORBOLETA", "texto_resposta": "'Borboleta' é com B no começo e um L só!",
+        "pistas": ["⚡↑", "✨↑↑", "🛡️→"], "modificadores_reais": { "faiscas": 5, "brilho": 8, "escudo": 1 }, "tipo": "correto" },
+      { "icone": "❌", "rotulo": "BORBOLETTA", "texto_resposta": "Acho que tem dois T... borboLETTA?",
+        "pistas": ["⚡→", "✨↓", "🛡️↑"], "modificadores_reais": { "faiscas": 0, "brilho": -2, "escudo": 2 }, "tipo": "erro_dupla" },
+      { "icone": "❌", "rotulo": "VORBOLETA", "texto_resposta": "É com V mesmo? V de vassoura?",
+        "pistas": ["⚡→", "✨↓↓", "🛡️→"], "modificadores_reais": { "faiscas": 0, "brilho": -4, "escudo": 0 }, "tipo": "erro_letra" }
+    ]
+  },
+  {
+    "id": "pt_02", "planeta": "palavras", "isBoss": false, "personagem_nome": "Rimante Poético", "personagem_icone": "🎵",
+    "pedido": "Qual palavra NÃO rima com as outras?",
+    "texto_explorador": "Qual palavra não combina no som?",
+    "dica_pedagogica": "BNCC EF01LP07: consciência fonológica e rimas.",
+    "opcoes": [
+      { "icone": "⭐", "rotulo": "MARTELO", "texto_resposta": "Martelo não rima com coração, feijão e balão!",
+        "pistas": ["⚡↑", "✨↑", "🛡️→"], "modificadores_reais": { "faiscas": 5, "brilho": 5, "escudo": 0 }, "tipo": "correto" },
+      { "icone": "❤️", "rotulo": "CORAÇÃO", "texto_resposta": "Coração rima com feijão... será que é a diferente?",
+        "pistas": ["⚡→", "✨→", "🛡️→"], "modificadores_reais": { "faiscas": 1, "brilho": 0, "escudo": 0 }, "tipo": "rima_igual" },
+      { "icone": "🎈", "rotulo": "BALÃO", "texto_resposta": "Balão rima com feijão e coração!",
+        "pistas": ["⚡→", "✨→", "🛡️→"], "modificadores_reais": { "faiscas": 0, "brilho": 0, "escudo": 0 }, "tipo": "rima_igual" }
+    ]
+  },
+  {
+    "id": "cie_01", "planeta": "descobertas", "isBoss": false, "personagem_nome": "Cientista Curiosa", "personagem_icone": "🔬",
+    "pedido": "O que uma PLANTA precisa para crescer saudável?",
+    "texto_explorador": "Do que a planta precisa pra crescer?",
+    "dica_pedagogica": "BNCC EF02CI04: necessidades das plantas.",
+    "opcoes": [
+      { "icone": "⭐", "rotulo": "Água, luz e ar", "texto_resposta": "Plantas precisam de água, luz do sol e ar para fazer fotossíntese!",
+        "pistas": ["⚡↑", "✨↑↑", "🛡️↑"], "modificadores_reais": { "faiscas": 5, "brilho": 8, "escudo": 3 }, "tipo": "correto" },
+      { "icone": "🌙", "rotulo": "Só água e escuro", "texto_resposta": "Plantas só precisam de água. Podem viver no escuro!",
+        "pistas": ["⚡→", "✨↓", "🛡️→"], "modificadores_reais": { "faiscas": 0, "brilho": -3, "escudo": 0 }, "tipo": "erro_luz" },
+      { "icone": "🍬", "rotulo": "Doces e suco", "texto_resposta": "Plantas gostam de comer doces e beber suco!",
+        "pistas": ["⚡→", "✨↓↓", "🛡️→"], "modificadores_reais": { "faiscas": 0, "brilho": -5, "escudo": 0 }, "tipo": "erro_engracado" }
+    ]
+  },
+  {
+    "id": "cie_02", "planeta": "descobertas", "isBoss": false, "personagem_nome": "Doutora Corpinho", "personagem_icone": "🫀",
+    "pedido": "Por que precisamos dormir TODAS as noites?",
+    "texto_explorador": "Por que dormir é importante?",
+    "dica_pedagogica": "BNCC EF01CI03: cuidados e funções do corpo humano.",
+    "opcoes": [
+      { "icone": "⭐", "rotulo": "Para crescer e aprender", "texto_resposta": "Durante o sono o corpo descansa, cresce e o cérebro organiza o que aprendemos!",
+        "pistas": ["⚡↑", "✨↑↑", "🛡️↑"], "modificadores_reais": { "faiscas": 5, "brilho": 8, "escudo": 4 }, "tipo": "correto" },
+      { "icone": "⏰", "rotulo": "Porque os pais mandam", "texto_resposta": "Só dormimos porque os adultos obrigam.",
+        "pistas": ["⚡→", "✨→", "🛡️→"], "modificadores_reais": { "faiscas": 1, "brilho": 0, "escudo": 1 }, "tipo": "parcial" },
+      { "icone": "🍕", "rotulo": "Para comer pizza", "texto_resposta": "Dormir dá fome e aí a gente come mais!",
+        "pistas": ["⚡→", "✨↓", "🛡️→"], "modificadores_reais": { "faiscas": 0, "brilho": -2, "escudo": 0 }, "tipo": "erro_engracado" }
+    ]
   }
 ]

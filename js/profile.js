@@ -12,7 +12,10 @@ export const PLANETS = [
   { id: 2, key: 'etica', name: 'Ética', color: '#5bc0de', theme: 'Certo vs errado, empatia' },
   { id: 3, key: 'seguranca', name: 'Segurança', color: '#f0ad4e', theme: 'Dados pessoais, privacidade' },
   { id: 4, key: 'pressa', name: 'Pressa', color: '#d9534f', theme: 'Tomada de decisão rápida' },
-  { id: 5, key: 'confusoes', name: 'Confusões', color: '#9370db', theme: 'Perguntas contraditórias ou impossíveis' }
+  { id: 5, key: 'confusoes', name: 'Confusões', color: '#9370db', theme: 'Perguntas contraditórias ou impossíveis' },
+  { id: 6, key: 'numeros', name: 'Números', color: '#ff6b6b', theme: 'Matemática divertida, raciocínio lógico', bncc: true },
+  { id: 7, key: 'palavras', name: 'Palavras', color: '#48dbfb', theme: 'Leitura, escrita, alfabetização', bncc: true },
+  { id: 8, key: 'descobertas', name: 'Descobertas', color: '#2ecc71', theme: 'Ciências, natureza, corpo humano', bncc: true }
 ];
 
 export const ATTRIBUTES = {
@@ -31,6 +34,7 @@ export const PROFILES = {
     diceCount: 2,
     diceAgency: 'pick-one',     // roll 2, pick 1
     maxRerolls: 0,
+    energiaPerPlanet: 0,        // doesn't use rerolls
     minAttr: 5,                 // attributes never go below 5
     maxPenalty: -5,             // single penalty cap
     modifierDisplay: 'icons-only',
@@ -49,6 +53,7 @@ export const PROFILES = {
     diceCount: 1,
     diceAgency: 'reroll',       // roll 1, reroll up to 3x with stars
     maxRerolls: 3,
+    energiaPerPlanet: 5,        // ⚡ to spend on rerolls
     minAttr: 0,                 // attributes can go to 0
     maxPenalty: -15,
     modifierDisplay: 'vague-hint',

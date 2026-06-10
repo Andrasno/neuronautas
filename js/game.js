@@ -6,22 +6,29 @@ import { clamp } from './utils.js';
 import { getProfile, PLANETS, ATTRIBUTES, getPrimaryAttribute, getBossThreshold } from './profile.js';
 import { saveGame, loadGame, clearSave, createNewGame } from './save.js';
 import { generateBoard, resolveLanding, getTileType, rollDiceWithAgency } from './board.js';
-import { loadCards, getCardsByPlanet, getBossByPlanet, getDisplayPistas, applyModifiers, checkGameOver, checkBossBonus } from './cards.js';
+import { loadCards, getCardsByPlanet, getBossByPlanet, getDisplayPistas, applyModifiers, checkGameOver, checkBossBonus, getNarrativeFeedback } from './cards.js';
 import { loadEvents, pickRandomEvent, applyEvent } from './events.js';
 import { hasStoredIdea, hasFreeSlot, storeIdea, getMochilaOption, clearMochilaAfterUse, clearMochila, createIdeaFromOption } from './mochila.js';
 import { loadUpgrades, getAvailableUpgrades, purchaseUpgrade, applyPassiveEffects as applyUpgradeEffects, resetPhaseFlags, getAllUpgrades } from './upgrades.js';
 import {
   renderProfileSelector,
+  renderAvatarPicker,
   renderGameScreen,
   renderDiceArea,
   renderBoard,
+  renderPlanetHub,
   showModal,
   closeModal,
   renderCardModal,
   showPostChoiceAnimation,
   updateAttributeBars,
-  updateStarsDisplay
+  updateStarsDisplay,
+  updateEnergiaDisplay,
+  updateMochilaBadge,
+  animateStarEarned,
+  reactCompanion
 } from './ui.js';
+import { getParticleSystem } from './particles.js';
 
 /** @type {Object} Global game state */
 let state = null;
@@ -31,6 +38,54 @@ let screen = 'profile-select';
 
 /** Data loaded flags */
 let dataLoaded = false;
+
+/** Particle system (lazy) */
+let particles = null;
+
+/**
+ * Earn stars with flying animation and particle burst.
+ */
+function earnStars(count) {
+  state.stars += count;
+  updateStarsDisplay(state.stars);
+
+  // Flying star from the character to the counter
+  const charEl = document.getElementById('neuronauta');
+  if (charEl) {
+    const rect = charEl.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    animateStarEarned(cx, cy);
+  }
+
+  // Particle burst
+  if (!particles) particles = getParticleSystem();
+  const charEl2 = document.getElementById('neuronauta');
+  if (charEl2) {
+    const r = charEl2.getBoundingClientRect();
+    particles.emit(r.left + r.width / 2, r.top + r.height / 2, {
+      count: 8,
+      colors: ['#f0c040', '#ffdd57'],
+      speed: 60
+    });
+  }
+}
+
+/**
+ * Emit celebration particles (card win, boss defeat).
+ */
+function celebrate(scale = 'medium') {
+  if (!particles) particles = getParticleSystem();
+  const cx = window.innerWidth / 2;
+  const cy = window.innerHeight / 2;
+  const configs = {
+    small: { count: 6, speed: 50, size: 3, colors: ['#f0c040'] },
+    medium: { count: 14, speed: 80, size: 4, colors: ['#f0c040', '#5bc0de', '#5cb85c'] },
+    large: { count: 30, speed: 160, size: 5, gravity: 60, life: 2.0,
+      colors: ['#f0c040', '#ffdd57', '#5bc0de', '#5cb85c', '#9370db'] }
+  };
+  particles.emit(cx, cy, configs[scale] || configs.medium);
+}
 
 /**
  * Load game data (cards, events) from JSON files.
@@ -78,7 +133,15 @@ export async function init() {
 function handleProfileSelected(profileKey) {
   state = createNewGame(profileKey);
   saveGame(state);
-  startGameLoop();
+  // Apply profile-specific CSS scaling
+  document.documentElement.className = `profile-${profileKey}`;
+
+  // Show avatar picker
+  renderAvatarPicker((avatarEmoji) => {
+    state.avatar = avatarEmoji;
+    saveGame(state);
+    startGameLoop();
+  });
 }
 
 /**
@@ -90,6 +153,9 @@ function startGameLoop() {
     renderProfileSelector(handleProfileSelected);
     return;
   }
+
+  // Apply profile class on reload
+  document.documentElement.className = `profile-${state.profile}`;
 
   screen = 'playing';
   renderGameScreen(state);
@@ -104,7 +170,32 @@ function renderCurrentBoard() {
   if (!state._boardTiles) {
     state._boardTiles = generateBoard(state.profile);
   }
-  renderBoard(state._boardTiles, getGlobalPosition());
+
+  // Default: planet hub view
+  if (!state._viewMode) state._viewMode = 'hub';
+
+  if (state._viewMode === 'hub') {
+    const profile = getProfile(state.profile);
+    const tilesPerPlanet = profile.housesPerPlanet;
+    const startIdx = (state.campaign.currentPlanet - 1) * tilesPerPlanet;
+    const planetTiles = state._boardTiles.slice(startIdx, startIdx + tilesPerPlanet);
+
+    const planet = PLANETS.find(p => p.id === state.campaign.currentPlanet);
+    renderPlanetHub(planetTiles, state.campaign.currentHouse, planet?.color || '#888',
+      (houseIndex, tileType) => {
+        // Move to the clicked node
+        state.campaign.currentHouse = houseIndex;
+        const globalPos = startIdx + houseIndex;
+        const profile = getProfile(state.profile);
+        renderCurrentBoard();
+        updateAttributeBars(state.attributes);
+        saveGame(state);
+        setTimeout(() => resolveTile(tileType, profile), 300);
+      });
+  } else {
+    // Legacy linear board
+    renderBoard(state._boardTiles, getGlobalPosition());
+  }
 }
 
 /**
@@ -121,6 +212,13 @@ function getGlobalPosition() {
  */
 function startTurn() {
   const profile = getProfile(state.profile);
+
+  if (state._viewMode === 'hub') {
+    // Hub mode: show prompt instead of dice
+    const diceArea = document.getElementById('dice-area');
+    if (diceArea) diceArea.innerHTML = '<p class="dice-hint">✨ Clique em uma missão no planeta!</p>';
+    return;
+  }
 
   if (profile.diceAgency === 'pick-one') {
     startPickOneDice(profile);
@@ -153,20 +251,22 @@ function startPickOneDice(profile) {
  */
 function startRerollDice(profile, rerollsUsed = 0) {
   const result = rollDiceWithAgency(state.profile, state.upgrades);
+  const canReroll = rerollsUsed < profile.maxRerolls && (state.energia || 0) > 0;
 
   renderDiceArea(
     result.values,
     'reroll',
-    state.stars,
+    state.energia || 0,
     rerollsUsed,
     profile.maxRerolls,
     null,
-    () => {
-      // Reroll
-      state.stars -= 1;
+    canReroll ? () => {
+      // Reroll using energia
+      state.energia -= 1;
       saveGame(state);
+      updateEnergiaDisplay(state.energia);
       startRerollDice(profile, rerollsUsed + 1);
-    },
+    } : null,
     () => {
       // Accept
       handleDiceResult(result.values[0]);
@@ -269,7 +369,9 @@ function resolveTrainingCard(profile) {
       state.attributes = result.newAttributes;
 
       // Reward: 1 star per training card
-      state.stars += 1;
+      earnStars(1);
+      celebrate('small');
+      reactCompanion('celebrate', 'Boa escolha!');
 
       // Check for +1 extra star from Amigo Estrela upgrade
       if (state.upgrades.includes('amigo_estrela')) {
@@ -280,7 +382,11 @@ function resolveTrainingCard(profile) {
       updateAttributeBars(state.attributes);
       updateStarsDisplay(state.stars);
 
+      // Narrative feedback after modifiers
+      const narrative = getNarrativeFeedback(opcao, result.appliedModifiers);
+
       showPostChoiceAnimation(result.appliedModifiers, () => {
+        reactCompanion('think', narrative);
         if (checkGameOver(state.attributes, state.profile)) {
           handleGameOver(profile);
         } else {
@@ -447,7 +553,9 @@ function resolveBossFight(profile) {
       state.attributes = result.newAttributes;
 
       // Reward: 3 stars for defeating boss
-      state.stars += 3;
+      earnStars(3);
+      celebrate('large');
+      reactCompanion('brave', 'Chefão derrotado!');
       if (state.upgrades.includes('amigo_estrela')) {
         state.stars += 1;
       }
@@ -467,7 +575,7 @@ function resolveBossFight(profile) {
         if (mochilaOption) {
           const result = applyModifiers(state.attributes, mochilaOption.modifiers, state.profile);
           state.attributes = result.newAttributes;
-          state.stars += 3;
+          earnStars(3);
           clearMochilaAfterUse(state);
           saveGame(state);
           updateAttributeBars(state.attributes);
@@ -483,10 +591,12 @@ function resolveBossFight(profile) {
 function storeIdeaInMochila(card) {
   if (!hasFreeSlot(state)) return;
 
-  const idea = createIdeaFromOption(card, 0); // Store option 0 as representative
+  const idea = createIdeaFromOption(card, 0);
   if (idea) {
     storeIdea(state, idea);
     saveGame(state);
+    updateMochilaBadge(state.mochila);
+    reactCompanion('think', 'Ideia guardada na mochila!');
   }
 }
 
@@ -509,7 +619,7 @@ function completePlanet(profile) {
   // Clear mochila between planets per spec
   clearMochila(state);
 
-  if (state.campaign.currentPlanet >= 5) {
+  if (state.campaign.currentPlanet >= PLANETS.length) {
     // Game complete!
     showModal(
       createPlaceholderContent('🏆', 'Parabéns! Você completou a jornada!'),
@@ -518,6 +628,8 @@ function completePlanet(profile) {
   } else {
     state.campaign.currentPlanet += 1;
     state.campaign.currentHouse = 0;
+    // Replenish energia for new planet
+    state.energia = profile.energiaPerPlanet || 0;
     // Rebuild board for new planet
     state._boardTiles = generateBoard(state.profile);
     // Apply planet-start effects
