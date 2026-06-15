@@ -2,8 +2,6 @@
  * NeuroPet — Meu Primeiro Treinador de IAs (Spec2)
  * Entry point. Module hub + all 5 modules.
  */
-import './styles/tokens.css';
-import './styles/main.css';
 import { createElement, clearElement } from './utils/dom.js';
 import NeuroPetController from './ui/NeuroPetController.js';
 import AudioManager from './engines/AudioManager.js';
