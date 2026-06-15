@@ -1,20 +1,22 @@
 :root {
-  /* Paleta — laboratório escolar acolhedor */
-  --color-bg:           #F0F4F8;
+  /* Paleta — laboratório escolar acolhedor e vibrante */
+  --color-bg:           #EEF2FF;
   --color-surface:      #FFFFFF;
-  --color-surface-alt:  #E8F0FE;
+  --color-surface-alt:  #E0EAFF;
   --color-text:         #1A2332;
   --color-text-muted:   #64748B;
-  --color-primary:      #3B82F6;
+  --color-primary:      #2563EB;
   --color-primary-light:#DBEAFE;
   --color-accent:       #F59E0B;
   --color-accent-light: #FEF3C7;
   --color-success:      #10B981;
   --color-success-light:#D1FAE5;
-  --color-error:        #EF4444;
-  --color-error-light:  #FEE2E2;
-  --color-purple:       #8B5CF6;
+  --color-error:        #F43F5E;
+  --color-error-light:  #FFE4E6;
+  --color-purple:       #7C3AED;
   --color-purple-light: #EDE9FE;
+  --color-pink:         #EC4899;
+  --color-pink-light:   #FCE7F3;
 
   /* Tipografia */
   --font-display: 'Quicksand', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;

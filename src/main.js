@@ -943,7 +943,7 @@ function renderModule5_Exposure() {
   const grid = createElement('div', { style:'display:flex;gap:var(--spacing-md);justify-content:center;flex-wrap:wrap;padding:var(--spacing-md);' });
   doctors.forEach(d => {
     grid.appendChild(createElement('div', { style:'text-align:center;' },
-      createElement('div', { style:'font-size:4rem;' }, d.emoji),
+      createElement('div', { style:'font-size:5.5rem;padding:0.25rem;' }, d.emoji),
       createElement('div', { style:'font-size:var(--text-xs);color:var(--color-text-muted);' }, d.desc)
     ));
   });
